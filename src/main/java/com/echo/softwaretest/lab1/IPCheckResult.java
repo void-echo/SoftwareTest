@@ -1,0 +1,9 @@
+package com.echo.softwaretest.lab1;
+
+public enum IPCheckResult {
+    IP_ADDRESS,
+    NOT_IP_ADDRESS_WRONG_NUMBER_OF_PARTS,
+    NOT_IP_ADDRESS_EMPTY_PART,
+    NOT_IP_ADDRESS_NON_DIGIT_PART,
+    NOT_IP_ADDRESS_PART_OUT_OF_RANGE
+}
