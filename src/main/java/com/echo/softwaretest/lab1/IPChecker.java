@@ -1,6 +1,12 @@
 package com.echo.softwaretest.lab1;
 
 public class IPChecker{
+    public static void main(String[] args) {
+        var li = "127..0.0.1".split("\\.");
+        for (String s : li) {
+            System.out.println(s);
+        }
+    }
     /**
      * IPv4 address Checker.
      * Check if a string is a valid IPv4 address.
@@ -21,10 +27,20 @@ public class IPChecker{
             if (ip.equals("localhost")) {
                 return IPCheckResult.IP_ADDRESS.toString();
             }
+            // count . number
+            int dotCount = 0;
+            for (int i = 0; i < ip.length(); i++) {
+                if (ip.charAt(i) == '.') {
+                    dotCount++;
+                }
+            }
+            if (dotCount == 3) {
+                return IPCheckResult.NOT_IP_ADDRESS_EMPTY_PART.toString();
+            }
             return IPCheckResult.NOT_IP_ADDRESS_WRONG_NUMBER_OF_PARTS.toString();
         }
         for (String part : ipParts) {
-            if (part.length() == 0) {
+            if (part == null || part.isEmpty()) {
                 return IPCheckResult.NOT_IP_ADDRESS_EMPTY_PART.toString();
             }
             for (int i = 0; i < part.length(); i++) {
