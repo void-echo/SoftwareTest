@@ -3,8 +3,7 @@ package com.echo.softwaretest.lab3tests;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 @SuppressWarnings("ConstantValue")
 @SpringBootTest
@@ -14,9 +13,6 @@ public class Lab3Test {
         return str == null ? null : str.toLowerCase();
     }
 
-    public static String trimToEmpty(String str) {
-        return str == null ? "" : str.trim();
-    }
 
     @Test
     public void testLowerCase() {
@@ -24,9 +20,21 @@ public class Lab3Test {
         assertNull(lowerCase(null));
     }
 
+    public static String trimToEmpty(String str) {
+        return str == null ? "" : str.trim();
+    }
+
+
     @Test
     public void testTrimToEmpty() {
-        assertEquals("hello world", trimToEmpty(" hello world "));
         assertEquals("", trimToEmpty(null));
+        assertEquals("", trimToEmpty(""));
+        assertEquals("", trimToEmpty("   "));
+        assertEquals("hello", trimToEmpty("  hell0  "));
+        assertEquals("hello", trimToEmpty("hello"));
+        assertEquals("hello", trimToEmpty("hello  "));
+        assertEquals("hello", trimToEmpty("  hello"));
+        assertNotEquals("hello", trimToEmpty("HELLO  "));
+        assertNotEquals("hello", trimToEmpty("  HELLO"));
     }
 }

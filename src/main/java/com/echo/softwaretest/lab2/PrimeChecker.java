@@ -19,7 +19,6 @@ public class PrimeChecker {
         scanner.close();
         return result.trim();
     }
-
     public static void main(String[] args) {
         PrimeChecker primeChecker = new PrimeChecker();
         try {
